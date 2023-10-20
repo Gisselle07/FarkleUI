@@ -2,28 +2,29 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
 import javax.swing.JRadioButton;
+
+
+
 
 public class Farkle implements ActionListener {
 
 	JFrame frame = new JFrame("Farkle");
 	
-	
+// trying to add side buttons for difficulty and for wild die option
 
-Container optionsContainer = new Container();
+	Container optionsContainer = new Container();
 
 
 
@@ -42,6 +43,8 @@ Container optionsContainer = new Container();
 	JRadioButton hardmode = new JRadioButton("hard");	
 
 	JRadioButton easymode = new JRadioButton("easy");	
+
+	JRadioButton wildDie = new JRadioButton("Wild Dice");
 	
 
 
@@ -73,17 +76,21 @@ Container optionsContainer = new Container();
 		difficulty.add(hardmode);
 		difficulty.add(easymode);
 
+
+
 		
 	optionsContainer.setLayout(new GridLayout(2,1));
-	
+	hardmode.setPreferredSize(new Dimension(100, 30)); 
+		easymode.setPreferredSize(new Dimension(100, 30)); 
 		optionsContainer.add(hardmode);
 		optionsContainer.add(easymode);
-		frame.add(optionsContainer,BorderLayout.EAST);
+		
+		
 		
 		 // importing the pictures from files to java
 		  
 		
-		frame.setSize(700,700);
+		frame.setSize(900,900);
 		imageIcons[0] = new ImageIcon("./farkle dice/dice 1.png");
 		imageIcons[1] = new ImageIcon("./farkle dice/dice 2.png");  
 		imageIcons[2] = new ImageIcon("./farkle dice/dice 3.png");  
@@ -113,6 +120,7 @@ Container optionsContainer = new Container();
 
 		buttonContainer.add(rollButton);
 		rollButton.addActionListener(this);
+		
 
 		buttonContainer.add(scoreButton);
 		scoreButton.addActionListener(this);
@@ -138,12 +146,18 @@ Container optionsContainer = new Container();
 		frame.add(diceContainer, BorderLayout.CENTER);
 		frame.add(buttonContainer, BorderLayout.SOUTH);
 		frame.add(labelContainer, BorderLayout.NORTH);
+		frame.add(optionsContainer,BorderLayout.EAST);
 	
 		
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setVisible(true);
+
+		// trynna make game end if player gets 10000 points
+		if(totalScore >= 100){
+			JOptionPane.showMessageDialog(frame, "You have won!");
+		}
 
 	}
 
@@ -301,7 +315,10 @@ Container optionsContainer = new Container();
 
 			}
 		}
-	}
+	} // end of action thing
+
+	
+
 
 	public void resetDice() {
 		for (int i = 0; i < diceButtons.length; i++) {
@@ -330,6 +347,8 @@ Container optionsContainer = new Container();
 
 		Farkle game = new Farkle();
 		game.setLogo();
+
+		
 	}
 
 
