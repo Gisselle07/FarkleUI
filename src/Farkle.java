@@ -2,7 +2,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
+
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -14,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 import javax.swing.JRadioButton;
 
 public class Farkle implements ActionListener {
@@ -199,7 +199,7 @@ Container optionsContainer = new Container();
 					|| (valueCount[4] > 0 && valueCount[4] < 3) || (valueCount[6] > 0 && valueCount[6] < 3)) {
 
 				// invalid die selection
-				JOptionPane.showMessageDialog(frame, "farkled! give up score");
+				JOptionPane.showMessageDialog(frame, "dice input is invalid");
 			} else if (valueCount[1] == 0 && valueCount[2] == 0 && valueCount[3] == 0 && valueCount[4] == 0
 					&& valueCount[5] == 0 && valueCount[6] == 0) {
 				Object[] options = { "yes", "no" };
